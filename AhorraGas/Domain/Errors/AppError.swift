@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// 1. Declara el enum como Error y LocalizedError.
+// 1. Declara el enum como Error y LocalizedError.
 //    - Error: permite usarlo con throw/catch
 //    - LocalizedError: permite que iOS muestre el mensaje automáticamente
 enum AppError: Error, LocalizedError {
