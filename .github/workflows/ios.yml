@@ -36,12 +36,20 @@ jobs:
           swiftlint lint --strict
 
       # No hardcodeamos el modelo de iPhone: preguntamos al runner qué
-      # simuladores tiene y cogemos el primer iPhone disponible. Así el CI
-      # no se rompe cuando GitHub cambie la imagen (iPhone 16 -> 17 -> ...).
+      # simuladores tiene y cogemos un iPhone del runtime de iOS MÁS NUEVO.
+      # Así el CI no se rompe al cambiar la imagen (iPhone 16 -> 17 -> ...) y
+      # el iOS del simulador cumple el deployment target de los targets de test.
       - name: Elegir un simulador de iPhone disponible
         run: |
-          UDID=$(xcrun simctl list devices available -j \
-            | jq -r '[.devices[][] | select(.name | startswith("iPhone"))][0].udid')
+          UDID=$(xcrun simctl list devices available -j | jq -r '
+            .devices
+            | to_entries
+            | map(select(.key | test("iOS")))
+            | sort_by(.key)
+            | last.value
+            | map(select(.name | startswith("iPhone")))
+            | .[0].udid
+          ')
           if [ -z "$UDID" ] || [ "$UDID" = "null" ]; then
             echo "::error::No hay ningún simulador de iPhone disponible en el runner."
             exit 1
