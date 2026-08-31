@@ -57,6 +57,10 @@ jobs:
           echo "Simulador elegido: $UDID"
           echo "SIMULATOR_ID=$UDID" >> "$GITHUB_ENV"
 
+      # Solo tests unitarios (AhorraGasTests): son rápidos (~seg) y prueban la
+      # lógica de dominio. Los UITests son lentos (arrancan la app varias veces)
+      # y de momento son plantilla; cuando haya UITests reales se correrán en un
+      # job aparte o en local, no en cada PR.
       - name: Compilar (build-for-testing)
         run: |
           set -o pipefail
@@ -64,6 +68,7 @@ jobs:
             -project "$PROJECT" \
             -scheme "$SCHEME" \
             -destination "id=$SIMULATOR_ID" \
+            -only-testing:AhorraGasTests \
             -skipPackagePluginValidation \
             CODE_SIGNING_ALLOWED=NO
 
@@ -74,4 +79,5 @@ jobs:
             -project "$PROJECT" \
             -scheme "$SCHEME" \
             -destination "id=$SIMULATOR_ID" \
+            -only-testing:AhorraGasTests \
             CODE_SIGNING_ALLOWED=NO
