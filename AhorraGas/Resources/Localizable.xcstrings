@@ -1,0 +1,287 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "connector.ccs2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CCS2"
+          }
+        }
+      }
+    },
+    "connector.chademo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CHAdeMO"
+          }
+        }
+      }
+    },
+    "connector.schuko" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schuko"
+          }
+        }
+      }
+    },
+    "connector.type1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo 1"
+          }
+        }
+      }
+    },
+    "connector.type2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo 2"
+          }
+        }
+      }
+    },
+    "connector.unknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desconocido"
+          }
+        }
+      }
+    },
+    "error.empty_response" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El servidor devolvió una respuesta vacía."
+          }
+        }
+      }
+    },
+    "error.firestore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error en base de datos: %@"
+          }
+        }
+      }
+    },
+    "error.location_unavailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo obtener la ubicación."
+          }
+        }
+      }
+    },
+    "error.network" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de red: %@"
+          }
+        }
+      }
+    },
+    "error.parse_failure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error procesando datos: %@"
+          }
+        }
+      }
+    },
+    "error.timeout" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connection timed out. Try again."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La conexión tardó demasiado. Inténtalo de nuevo."
+          }
+        }
+      }
+    },
+    "error.unknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ha ocurrido un error inesperado."
+          }
+        }
+      }
+    },
+    "fuel.biodiesel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biodiesel"
+          }
+        }
+      }
+    },
+    "fuel.bioetanol" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bioetanol"
+          }
+        }
+      }
+    },
+    "fuel.electric" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eléctrico"
+          }
+        }
+      }
+    },
+    "fuel.gasoleoA" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasóleo A"
+          }
+        }
+      }
+    },
+    "fuel.gasoleoB" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasóleo B"
+          }
+        }
+      }
+    },
+    "fuel.gasoleoC" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasóleo C"
+          }
+        }
+      }
+    },
+    "fuel.gasoleoPremium" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasóleo Premium"
+          }
+        }
+      }
+    },
+    "fuel.gasolina95E5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasolina 95 E5"
+          }
+        }
+      }
+    },
+    "fuel.gasolina95E5Premium" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasolina 95 E5 Premium"
+          }
+        }
+      }
+    },
+    "fuel.gasolina98E5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasolina 98 E5"
+          }
+        }
+      }
+    },
+    "fuel.glp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GLP"
+          }
+        }
+      }
+    },
+    "fuel.gnc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GNC"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.2"
+}
