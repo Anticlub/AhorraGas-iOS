@@ -1,0 +1,57 @@
+name: iOS CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# Cancela ejecuciones antiguas de la misma rama si se empuja algo nuevo
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Compilar, testear y analizar
+    # Los proyectos iOS SOLO compilan en macOS (necesitan Xcode)
+    runs-on: macos-latest
+
+    env:
+      SCHEME: AhorraGas
+      PROJECT: AhorraGas.xcodeproj
+      # Simulador donde se ejecutan los tests. OS=latest usa la última versión instalada.
+      DESTINATION: 'platform=iOS Simulator,name=iPhone 16,OS=latest'
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Seleccionar la última versión de Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Análisis estático (SwiftLint, bloqueante)
+        run: |
+          brew install swiftlint
+          swiftlint lint --strict
+
+      - name: Compilar (build-for-testing)
+        run: |
+          set -o pipefail
+          xcodebuild build-for-testing \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -destination "$DESTINATION" \
+            -skipPackagePluginValidation \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Ejecutar tests (test-without-building)
+        run: |
+          set -o pipefail
+          xcodebuild test-without-building \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -destination "$DESTINATION" \
+            CODE_SIGNING_ALLOWED=NO
