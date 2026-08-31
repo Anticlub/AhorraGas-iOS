@@ -20,8 +20,6 @@ jobs:
     env:
       SCHEME: AhorraGas
       PROJECT: AhorraGas.xcodeproj
-      # Simulador donde se ejecutan los tests. OS=latest usa la última versión instalada.
-      DESTINATION: 'platform=iOS Simulator,name=iPhone 16,OS=latest'
 
     steps:
       - name: Checkout del código
@@ -37,13 +35,27 @@ jobs:
           brew install swiftlint
           swiftlint lint --strict
 
+      # No hardcodeamos el modelo de iPhone: preguntamos al runner qué
+      # simuladores tiene y cogemos el primer iPhone disponible. Así el CI
+      # no se rompe cuando GitHub cambie la imagen (iPhone 16 -> 17 -> ...).
+      - name: Elegir un simulador de iPhone disponible
+        run: |
+          UDID=$(xcrun simctl list devices available -j \
+            | jq -r '[.devices[][] | select(.name | startswith("iPhone"))][0].udid')
+          if [ -z "$UDID" ] || [ "$UDID" = "null" ]; then
+            echo "::error::No hay ningún simulador de iPhone disponible en el runner."
+            exit 1
+          fi
+          echo "Simulador elegido: $UDID"
+          echo "SIMULATOR_ID=$UDID" >> "$GITHUB_ENV"
+
       - name: Compilar (build-for-testing)
         run: |
           set -o pipefail
           xcodebuild build-for-testing \
             -project "$PROJECT" \
             -scheme "$SCHEME" \
-            -destination "$DESTINATION" \
+            -destination "id=$SIMULATOR_ID" \
             -skipPackagePluginValidation \
             CODE_SIGNING_ALLOWED=NO
 
@@ -53,5 +65,5 @@ jobs:
           xcodebuild test-without-building \
             -project "$PROJECT" \
             -scheme "$SCHEME" \
-            -destination "$DESTINATION" \
+            -destination "id=$SIMULATOR_ID" \
             CODE_SIGNING_ALLOWED=NO
