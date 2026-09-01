@@ -23,12 +23,5 @@ struct PriceListView: View {
 }
 
 #Preview {
-    PriceListView(
-        stations: [
-            Station(id: 1, brand: "Repsol", address: "Calle A", municipality: "Madrid", latitude: 40, longitude: -3, prices: [.gasoleoA: 1.509]),
-            Station(id: 2, brand: "Cepsa",  address: "Calle B", municipality: "Madrid", latitude: 40, longitude: -3, prices: [.gasoleoA: 1.629]),
-            Station(id: 3, brand: "Shell",  address: "Calle C", municipality: "Madrid", latitude: 40, longitude: -3, prices: [.gasoleoA: 1.697])
-        ],
-        fuelType: .gasoleoA
-    )
+    PriceListView(stations: Station.samples, fuelType: .gasoleoA)
 }

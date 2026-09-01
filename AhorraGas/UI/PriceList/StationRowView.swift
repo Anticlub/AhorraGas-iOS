@@ -14,7 +14,7 @@ struct StationRowView: View {
     
     var body: some View {
         
-        HStack{
+        HStack {
             VStack(alignment: .leading) {
                 Text(station.brand)
                     .fontWeight(.bold)
@@ -43,12 +43,11 @@ struct StationRowView: View {
     }
 }
 
-
 #Preview {
-    VStack{
-        StationRowView(station: Station(id: 1, brand: "Repsol", address: "Calle Falsa", municipality: "Madrid", latitude: 40.0 , longitude: -3.0, prices: [.gasoleoA: 1.509]), fuelType: .gasoleoA, priceLevel: .cheap)
-        StationRowView(station: Station(id: 1, brand: "Repsol", address: "Calle Falsa", municipality: "Madrid", latitude: 40.0 , longitude: -3.0, prices: [.gasoleoA: 1.509]), fuelType: .gasoleoA, priceLevel: .cheap)
-        StationRowView(station: Station(id: 1, brand: "Repsol", address: "Calle Falsa", municipality: "Madrid", latitude: 40.0 , longitude: -3.0, prices: [.gasoleoA: 1.509]), fuelType: .gasoleoA, priceLevel: .cheap)
-    }
+    StationRowView(
+        station: Station.samples[0],
+        fuelType: .gasoleoA,
+        priceLevel: .cheap
+    )
     .padding()
 }
