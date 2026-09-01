@@ -28,4 +28,17 @@ enum PriceLevel {
         case .unknown:   return "priceGray"
         }
     }
+    
+    static func level(for price: Double?, in range: PriceRange) -> PriceLevel {
+        guard let price, let min = range.min, let max = range.max, !range.isEmpty else {
+            return .unknown
+        }
+        if range.isFlat {
+            return .mid
+        }
+        let tercio = (max - min) / 3
+        if price < min + tercio { return .cheap }
+        if price < min + (2*tercio) { return .mid }
+        return .expensive
+    }
 }
