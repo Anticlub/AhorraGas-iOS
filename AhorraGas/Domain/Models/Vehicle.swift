@@ -5,7 +5,7 @@
 //  Created by cristofer fernandez on 24/05/2026.
 //
 
-struct Vehicle {
+nonisolated struct Vehicle {
 
     // 2. Nombre que el usuario le da a su vehículo.
     //    Ejemplo: "Mi Coche", "Furgoneta del trabajo".

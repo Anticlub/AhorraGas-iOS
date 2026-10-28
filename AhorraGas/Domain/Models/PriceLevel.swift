@@ -10,7 +10,11 @@ import Foundation
 // 1. Representa el nivel de precio de una gasolinera respecto al resto
 //    del conjunto visible. Se usa para pintar el color del indicador
 //    en la lista y en el mapa (verde / amarillo / rojo / gris).
-enum PriceLevel {
+//
+//    `nonisolated`: es un modelo de dominio (dato puro), no está atado al
+//    hilo principal, así que su `==` sintetizado se puede usar desde cualquier
+//    contexto (p. ej. los tests) sin avisos de aislamiento de actor.
+nonisolated enum PriceLevel {
 
     case cheap      // precio en el tercio inferior del rango → verde
     case mid        // precio en el tercio medio del rango → amarillo

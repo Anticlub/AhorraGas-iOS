@@ -9,7 +9,7 @@ import Foundation
 
 // Estación de servicio. Modelo de dominio limpio e inmutable;
 // el parseo del JSON del Ministerio se hará en la capa de datos.
-struct Station: Identifiable {
+nonisolated struct Station: Identifiable {
     let id: Int
     let brand: String
     let address: String

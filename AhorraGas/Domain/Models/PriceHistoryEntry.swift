@@ -10,7 +10,7 @@ import Foundation
 // 1. Representa un registro histórico del precio de un combustible
 //    en una estación concreta en un momento dado.
 //    Los datos vienen de la API de Precioil, no de Firestore.
-struct PriceHistoryEntry: Identifiable {
+nonisolated struct PriceHistoryEntry: Identifiable {
 
     // 2. Identificador único del registro.
     //    Se construye como "\(stationId)_\(fuelType.rawValue)_\(recordedAt)"
