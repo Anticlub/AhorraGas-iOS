@@ -9,7 +9,12 @@ import Testing
 @testable import AhorraGas
 
 struct PriceRangeTests {
-
+    
+    private func station(gasoleoA: Double?) -> Station {
+        let prices: [FuelType: Double] = gasoleoA.map { [.gasoleoA: $0]} ?? [:]
+        return Station(id: 1, brand: "Repsol", address: "Calle Falsa", municipality: "Madrid", latitude: 40.0, longitude: -3.0, prices: prices)
+    }
+    
     @Test("PriceRange isEmpty es true si min y max son nulos y count es 0")
     func isEmptyisTrueConMinYMaxNilYCountEsCero() {
         #expect(PriceRange(min: nil, max: nil, count: 0).isEmpty == true )
@@ -42,4 +47,29 @@ struct PriceRangeTests {
     func rangosVaciosSonEmpty(rango: PriceRange) {
         #expect(rango.isEmpty)
     }
+    
+    @Test("Sin estaciones rango vacio")
+    func sinEstacionesRangoIsEmpty() {
+        let range = PriceRange.from(stations: [], fuelType: .gasolina95E5)
+        #expect(range.isEmpty)
+    }
+
+    @Test("from calcula min, max y count con precios")
+    func fromCalculaRangoConPrecios() {
+        let estaciones = [station(gasoleoA: 1.5), station(gasoleoA: 1.7), station(gasoleoA: 1.6)]
+        let range = PriceRange.from(stations: estaciones, fuelType: .gasoleoA)
+        #expect(range.min == 1.5)
+        #expect(range.max == 1.7)
+        #expect(range.count == 3)
+    }
+
+    @Test("from excluye estaciones que no venden ese combustible")
+    func fromExcluyeEstacionesSinEseCombustible() {
+        let estaciones = [station(gasoleoA: 1.5), station(gasoleoA: nil), station(gasoleoA: 1.7)]
+        let range = PriceRange.from(stations: estaciones, fuelType: .gasoleoA)
+        #expect(range.count == 2)
+        #expect(range.min == 1.5)
+        #expect(range.max == 1.7)
+    }
 }
+
