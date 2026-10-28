@@ -11,7 +11,7 @@
 //
 // ⚠️ CRÍTICO: el rango siempre se calcula con precios YA descontados.
 //    Nunca usar precios brutos aquí, o los colores serán incorrectos.
-struct PriceRange {
+nonisolated struct PriceRange {
 
     // 2. Precio mínimo del conjunto. nil si no hay estaciones con precio.
     let min: Double?
@@ -37,5 +37,10 @@ struct PriceRange {
     var isFlat: Bool {
         guard let min, let max else { return false }
         return min == max
+    }
+    
+    static func from(stations: [Station], fuelType: FuelType) -> PriceRange {
+        let prices = stations.compactMap { $0.price(for: fuelType) }
+        return PriceRange(min: prices.min(), max: prices.max(), count: prices.count)
     }
 }

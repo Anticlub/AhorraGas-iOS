@@ -9,7 +9,7 @@ import Foundation
 
 // 1. CaseIterable permite iterar todos los casos (útil para pickers y filtros)
 // 2. String rawValue se usa como clave en Firestore y UserDefaults
-enum FuelType: String, CaseIterable {
+nonisolated enum FuelType: String, CaseIterable {
 
     // 3. Cada caso representa un tipo de combustible.
     //    El rawValue coincide con la clave que guardaremos en Firestore.

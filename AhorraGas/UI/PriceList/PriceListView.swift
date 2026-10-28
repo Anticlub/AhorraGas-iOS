@@ -12,8 +12,14 @@ struct PriceListView: View {
     let fuelType: FuelType
     
     var body: some View {
-        List(stations) { station in
-            StationRowView(station: station, fuelType: fuelType, priceLevel: .cheap)
+        let range = PriceRange.from(stations: stations, fuelType: fuelType)
+        
+        return List(stations) { station in
+            StationRowView(
+                station: station,
+                fuelType: fuelType,
+                priceLevel: PriceLevel.level(for: station.price(for: fuelType), in: range)
+            )
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
                 .listRowBackground(Color.clear)

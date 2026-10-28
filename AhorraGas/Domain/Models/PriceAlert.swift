@@ -10,7 +10,7 @@ import Foundation
 // 1. Representa una alerta de precio que el usuario ha configurado
 //    para una estación favorita y un combustible concreto.
 //    Se persiste en Firestore bajo /users/{uid}/alerts/{id}.
-struct PriceAlert: Identifiable {
+nonisolated struct PriceAlert: Identifiable {
 
     // 2. Identificador único construido como "\(stationId)_\(fuelType.rawValue)".
     //    Ejemplo: "1234_gasoleoA".
